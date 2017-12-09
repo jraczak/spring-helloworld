@@ -12,4 +12,9 @@ public class HelloWorldController {
     public String sayHello(@RequestParam(value = "name") String name) {
         return "Hello, " + name +"!";
     }
+
+    @RequestMapping("goodbye")
+    public String sayGoodbye(@RequestParam(value = "name") String name) {
+        return "See you later, " + name +"!";
+    }
 }
