@@ -2,15 +2,20 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Test Page</title>
+    <title>Default Welcome Page</title>
 
-    <link rel="stylesheet" type="text/css" th:href="@{/css/test.css}" href="../static/css/test.css"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap}"
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap/css/bootstrap.min.css}"
+          href="../static/css/bootstrap/css/bootstrap.min.css"/>
 </head>
 <body>
-<h1 th:text="'This is only a test, ' + ${name} +'!'">A sample header</h1>
+<h1>Welcome to the testing page!</h1>
 
-<p th:text="'The total of your values is ' + ${total}">..we're not sure!</p>
+<form action="#" th:action="@{/test}" th:object="${test}" method="post">
+    <p>What's your name? <input type="text" th:field="*{name}"/></p>
+    <p>How much do you have in checking? Use a fake number. <input type="text" th:field="*{checkingAmount}"/></p>
+    <p>How much do you have in savings? Use a fake number. <input type="text" th:field="*{savingsAmount}"/></p>
+    <p><input class="btn btn-primary" type="submit" value="Let's go"/></p>
+</form>
 
 </body>
 </html>

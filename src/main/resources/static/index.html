@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Default Welcome Page</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap/css/bootstrap.min.css}"
+          href="../static/css/bootstrap/css/bootstrap.min.css"/>
 </head>
 <body>
-<h1>Welcome to the test page!</h1>
+<h1>Welcome to the testing page!</h1>
+
+<form action="#" th:action="@{/test}" th:object="${test}" method="post">
+    <p>What's your name? <input type="text" th:field="*{name}"/></p>
+    <p>How much do you have in checking? Use a fake number. <input type="text" th:field="*{checkingAmount}"/></p>
+    <p>How much do you have in savings? Use a fake number. <input type="text" th:field="*{savingsAmount}"/></p>
+    <p><input class="btn btn-primary" type="submit" value="Let's go"/></p>
+</form>
 
 </body>
 </html>

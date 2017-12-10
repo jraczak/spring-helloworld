@@ -1,21 +1,22 @@
 package com.tutorialspoint.helloworld.web;
 
+import com.tutorialspoint.helloworld.models.Test;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class TestController {
 
-    @RequestMapping("/test")
-    public String test(Model model,
-                       @RequestParam(value="name", required=false, defaultValue = "friend") String name,
-                       @RequestParam(value="int1", required=false, defaultValue = "1") int int1,
-                       @RequestParam(value = "int2", required = false, defaultValue = "1") int int2) {
-        model.addAttribute("name", name);
-        model.addAttribute("total", int1+int2);
+    @GetMapping("/test")
+    public String test(Model model) {
+        model.addAttribute("test", new Test());
         return "test";
+    }
+
+    @PostMapping("/test")
+    public String testSubmit(@ModelAttribute Test test) {
+        return "result";
     }
 
 }

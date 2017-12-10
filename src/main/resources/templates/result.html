@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Your Results</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap/css/bootstrap.min.css}"
+          href="../static/css/bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+
+<h1 th:text="'Thanks for helping us test, ' + ${test.name} + '!'"></h1>
+
+<p th:text="'Your (fake) total asset balance is $' + ${test.savingsAmount + test.checkingAmount}"></p>
+</body>
+</html>
