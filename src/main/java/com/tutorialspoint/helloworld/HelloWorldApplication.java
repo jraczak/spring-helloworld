@@ -1,5 +1,12 @@
 package com.tutorialspoint.helloworld;
 
+import com.tutorialspoint.helloworld.models.CustomerOrder;
+import com.tutorialspoint.helloworld.models.Product;
+import com.tutorialspoint.helloworld.repositories.CustomerRepository;
+import com.tutorialspoint.helloworld.repositories.OrderRepository;
+import com.tutorialspoint.helloworld.repositories.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.thymeleaf.TemplateEngine;
@@ -10,7 +17,14 @@ import javax.servlet.ServletContext;
 
 
 @SpringBootApplication
-public class HelloWorldApplication {
+public class HelloWorldApplication implements CommandLineRunner {
+
+	@Autowired
+	ProductRepository productRepository;
+	@Autowired
+	OrderRepository orderRepository;
+	@Autowired
+	CustomerRepository customerRepository;
 
 	//private final TemplateEngine templateEngine;
 
@@ -39,5 +53,20 @@ public class HelloWorldApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(HelloWorldApplication.class, args);
+	}
+
+	@Override
+	public void run(String... strings) throws Exception {
+
+		Product mocha = new Product();
+		mocha.setProductName("Mocha");
+		mocha.setProductPrice(3.95);
+
+		Product cappuccino = new Product();
+		cappuccino.setProductName("Cappuccino");
+		cappuccino.setProductPrice(4.95);
+
+		productRepository.save(mocha);
+		productRepository.save(cappuccino);
 	}
 }
